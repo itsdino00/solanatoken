@@ -9,18 +9,43 @@
     <h1>Your Website Name</h1>
     <button id="walletButton">Connect Wallet</button>
 
+    <!-- Add CreateToken Form -->
+    <div id="createTokenForm" style="display: none;">
+        <input type="text" id="tokenName" placeholder="Token Name"><br>
+        <input type="text" id="symbol" placeholder="Symbol"><br>
+        <input type="text" id="metadataUrl" placeholder="Metadata URL"><br>
+        <input type="number" id="amount" placeholder="Amount"><br>
+        <input type="number" id="decimals" placeholder="Decimals"><br>
+        <button id="createTokenBtn">Create Token</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter"></script>
     <script>
         const walletButton = document.getElementById("walletButton");
+        const createTokenForm = document.getElementById("createTokenForm");
 
         walletButton.addEventListener("click", async () => {
             try {
                 const wallet = await window.solana.connect();
                 console.log('Wallet connected:', wallet.publicKey.toString());
                 walletButton.innerText = 'Connected'; // Change button text to "Connected"
+                createTokenForm.style.display = "block"; // Show CreateToken form
             } catch (error) {
                 console.error('Wallet connection failed:', error);
             }
+        });
+
+        // Add functionality to create token when Create Token button is clicked
+        document.getElementById("createTokenBtn").addEventListener("click", async () => {
+            // Get input values
+            const tokenName = document.getElementById("tokenName").value;
+            const symbol = document.getElementById("symbol").value;
+            const metadataUrl = document.getElementById("metadataUrl").value;
+            const amount = document.getElementById("amount").value;
+            const decimals = document.getElementById("decimals").value;
+
+            // Call function to create token with input values
+            // Implement this part using the provided CreateToken logic
         });
     </script>
 </body>
