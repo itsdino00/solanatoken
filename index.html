@@ -7,10 +7,20 @@
 </head>
 <body>
     <h1>Your Website Name</h1>
-    <button id="walletButton">Wallet</button>
-    
+    <button id="walletButton">Connect Wallet</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter"></script>
     <script>
-        // Your wallet button functionality goes here
+        const walletButton = document.getElementById("walletButton");
+
+        walletButton.addEventListener("click", async () => {
+            try {
+                const wallet = await window.solana.connect();
+                console.log('Wallet connected:', wallet.publicKey.toString());
+            } catch (error) {
+                console.error('Wallet connection failed:', error);
+            }
+        });
     </script>
 </body>
 </html>
