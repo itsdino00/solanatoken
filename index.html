@@ -17,6 +17,7 @@
             try {
                 const wallet = await window.solana.connect();
                 console.log('Wallet connected:', wallet.publicKey.toString());
+                walletButton.innerText = 'Connected'; // Change button text to "Connected"
             } catch (error) {
                 console.error('Wallet connection failed:', error);
             }
